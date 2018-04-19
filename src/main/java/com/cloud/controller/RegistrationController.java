@@ -36,10 +36,9 @@ class RegistrationController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(@ModelAttribute Attendee attendee, RedirectAttributes redirectAttributes)
-    {
+    public String register(@ModelAttribute Attendee attendee, RedirectAttributes redirectAttributes) {
         attendeeService.addAttendee(attendee);
-        redirectAttributes.addFlashAttribute("flash", "Registered "+ attendee.getEmail());
+        redirectAttributes.addFlashAttribute("flash", "Registered " + attendee.getEmail());
         return "redirect:/";
     }
 
@@ -54,20 +53,28 @@ class RegistrationController {
             attendee.setEmail(email);
             attendee = attendeeService.addAttendee(attendee);
             modelAndView.addObject("message", "Attendee added with email: " + attendee.getEmail());
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             modelAndView.addObject("message", "Failed to add Attendee: " + ex.getMessage());
         }
         modelAndView.addObject("attendees", attendeeService.getAttendee());
         return modelAndView;
     }
+
     @RequestMapping("/version")
     @ResponseBody
     public String getVersion() {
         return "ver 1.7";
     }
+
     @RequestMapping("/landing")
     public String getLanding() {
+        return "landing";
+    }
+
+    //}
+    @RequestMapping(value = "/landing", method = RequestMethod.GET)
+    public String myLanding(Model model) {
+        model.addAttribute("attendee", new Attendee());
         return "landing";
     }
 }

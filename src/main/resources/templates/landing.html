@@ -6,10 +6,14 @@
     <div class="container text-center">
         <h1 class="display-1 mt-4">Cloud Security Conf</h1>
         <p class="lead mb-4">Coming Soon, a One-day Cloud Conference</p>
-        <form action="#" method="post">
+        <form th:action="@{register}" th:object="${attendee}" method="post">
             <div class="input-group mb-3 col-md-6 offset-md-3">
-                <input type="text" class="form-control" placeholder="Email" aria-label="Enter your
-                email for info..." aria-describedby="basic-addon2" />
+                <input type="text" th:field="*{name}" class="form-control"
+                       placeholder="Name" aria-label="Enter your name for info..." aria-describedby="basic-addon2" />
+                <input type="text" th:field="*{email}" class="form-control"
+                       placeholder="Email" aria-label="Enter your email for info..." aria-describedby="basic-addon2" />
+                <input type="text" th:field="*{phone}" class="form-control"
+                       placeholder="Phone" aria-label="Enter your phone for info..." aria-describedby="basic-addon2" />
                 <div class="input-group-append">
                     <button class="btn btn-primary" type="submit" value="Submit">Sign Up</button>
                 </div>
