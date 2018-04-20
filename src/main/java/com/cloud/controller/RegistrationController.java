@@ -59,6 +59,7 @@ class RegistrationController {
         modelAndView.addObject("attendees", attendeeService.getAttendee());
         return modelAndView;
     }
+    
 
     @RequestMapping("/version")
     @ResponseBody
