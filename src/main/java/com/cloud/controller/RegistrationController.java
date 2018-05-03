@@ -44,6 +44,7 @@ class RegistrationController {
     }
 
     @RequestMapping(value = "/admin", method = RequestMethod.POST, consumes = MediaType.ALL_VALUE)
+
     @ResponseStatus(value = HttpStatus.OK)
     ModelAndView addAttendee(@RequestParam String email) throws Exception {
 
